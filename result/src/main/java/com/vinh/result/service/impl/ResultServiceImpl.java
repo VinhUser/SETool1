@@ -7,11 +7,15 @@ import com.vinh.result.model.Result;
 import com.vinh.result.model.dto.ResultDTO;
 import com.vinh.result.repository.ResultRepository;
 import com.vinh.result.service.ResultService;
+import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
 
+@Slf4j
+@Service
 public class ResultServiceImpl implements ResultService {
     @Autowired
     ResultRepository resultRepository;
