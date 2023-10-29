@@ -2,6 +2,7 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
       <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
@@ -9,7 +10,7 @@
         <module name="result" />
         <module name="task" />
         <module name="mockTest" />
-        <module name="submissionTest" />
+        <module name="submissionTask" />
         <module name="project" />
         <module name="discoveryServer" />
         <module name="interview" />
@@ -34,7 +35,7 @@
       <module name="mockTest" options="-parameters" />
       <module name="project" options="-parameters" />
       <module name="result" options="-parameters" />
-      <module name="submissionTest" options="-parameters" />
+      <module name="submissionTask" options="-parameters" />
       <module name="task" options="-parameters" />
       <module name="user" options="-parameters" />
     </option>

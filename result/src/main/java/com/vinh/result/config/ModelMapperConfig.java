@@ -1,4 +1,4 @@
-package com.vinh.mockTest.config;
+package com.vinh.result.config;
 
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;

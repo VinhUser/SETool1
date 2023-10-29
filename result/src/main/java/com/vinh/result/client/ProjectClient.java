@@ -1,6 +1,7 @@
-package com.vinh.mockTest.client;
+package com.vinh.result.client;
 
-import com.vinh.mockTest.model.records.ProjectRecord;
+
+import com.vinh.result.model.record.ProjectRecord;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.service.annotation.GetExchange;
 import org.springframework.web.service.annotation.HttpExchange;

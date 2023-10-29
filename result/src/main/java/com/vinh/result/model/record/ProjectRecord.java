@@ -1,6 +1,4 @@
-package com.vinh.mockTest.model.records;
-
-import java.util.Date;
+package com.vinh.result.model.record;
 
 public record ProjectRecord(
         String projectName,

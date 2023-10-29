@@ -1,6 +1,6 @@
 package com.vinh.mockTest.config;
 
-import com.vinh.mockTest.client.SubmissionClient;
+import com.vinh.mockTest.client.ProjectClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;
@@ -13,17 +13,17 @@ import java.util.Collections;
 
 @Configuration
 public class WebClientConfig {
-    private static final String URL_Submission = "http://localhost:9004";   //get api
+    private static final String URL_Project = "http://localhost:9001";   //get api
     @Bean
-    public SubmissionClient submissionClient() {
+    public ProjectClient projectClient() {
         HttpServiceProxyFactory httpServiceProxyFactory =
                 HttpServiceProxyFactory.builder(WebClientAdapter.forClient(WebClient.builder()
-                                .baseUrl(URL_Submission)
+                                .baseUrl(URL_Project)
                                 .defaultCookie("cookieKey", "cookieValue")
                                 .defaultHeader(HttpHeaders.CONTENT_TYPE, MediaType.APPLICATION_JSON_VALUE)
-                                .defaultUriVariables(Collections.singletonMap("url", URL_Submission))
+                                .defaultUriVariables(Collections.singletonMap("url", URL_Project))
                                 .build()))
                         .build();
-        return httpServiceProxyFactory.createClient(SubmissionClient.class);
+        return httpServiceProxyFactory.createClient(ProjectClient.class);
     }
 }

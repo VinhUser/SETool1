@@ -11,7 +11,7 @@
 	<groupId>com.vinh</groupId>
 	<artifactId>mockTest</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>moockTest</name>
+	<name>mockTest</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
 		<java.version>17</java.version>
@@ -65,8 +65,8 @@
 			<optional>true</optional>
 		</dependency>
 		<dependency>
-			<groupId>com.microsoft.sqlserver</groupId>
-			<artifactId>mssql-jdbc</artifactId>
+			<groupId>com.mysql</groupId>
+			<artifactId>mysql-connector-j</artifactId>
 			<scope>runtime</scope>
 		</dependency>
 		<dependency>

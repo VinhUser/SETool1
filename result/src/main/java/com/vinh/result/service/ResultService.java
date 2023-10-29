@@ -1,4 +1,11 @@
 package com.vinh.result.service;
 
-public interface resultService {
+import com.vinh.result.controller.res.PagingResponse;
+import com.vinh.result.model.Result;
+import com.vinh.result.model.dto.ResultDTO;
+import org.springframework.data.domain.Pageable;
+
+public interface ResultService {
+    Result saveMockTest(Result mockTest);
+    PagingResponse<ResultDTO> findAllResult(Pageable pageable);
 }

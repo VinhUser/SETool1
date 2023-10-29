@@ -1,4 +1,6 @@
 package com.vinh.submissionTest.model;
 
-public class Submission {
+import java.io.Serializable;
+
+public class Submission implements Serializable {
 }
