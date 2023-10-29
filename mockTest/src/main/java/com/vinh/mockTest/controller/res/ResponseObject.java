@@ -1,4 +1,4 @@
-package com.vinh.moockTest.controller.res;
+package com.vinh.mockTest.controller.res;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -1,2 +1,4 @@
-package com.vinh.task.model;public class Task {
+package com.vinh.task.model;
+
+public class Task {
 }

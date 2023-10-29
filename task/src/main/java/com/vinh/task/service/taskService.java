@@ -1,2 +1,4 @@
-package com.vinh.task.service;public interface taskService {
+package com.vinh.task.service;
+
+public interface taskService {
 }

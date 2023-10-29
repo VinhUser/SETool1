@@ -1,2 +1,4 @@
-package com.vinh.result.controller;public class ResultController {
+package com.vinh.result.controller;
+
+public class ResultController {
 }

@@ -1,2 +1,4 @@
-package com.vinh.result.service;public interface resultService {
+package com.vinh.result.service;
+
+public interface resultService {
 }

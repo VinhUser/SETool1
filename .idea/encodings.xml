@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/discoveryServer/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/discoveryServer/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/group/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/group/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/interview/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/interview/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mockTest/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/mockTest/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/project/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/result/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/result/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/submissionTest/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/submissionTest/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/task/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/task/src/main/resources" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/user/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/user/src/main/resources" charset="UTF-8" />
+  </component>
+</project>

@@ -1,2 +1,4 @@
-package com.vinh.submissionTest.model;public class Submission {
+package com.vinh.submissionTest.model;
+
+public class Submission {
 }

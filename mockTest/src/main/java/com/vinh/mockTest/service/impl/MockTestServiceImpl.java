@@ -1,4 +1,4 @@
-package com.vinh.moockTest.service.impl;
+package com.vinh.mockTest.service.impl;
 
 public class MockTestServiceImpl {
 }

@@ -1,13 +1,13 @@
-package com.vinh.moockTest;
+package com.vinh.mockTest;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class MoockTestApplication {
+public class MockTestApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MoockTestApplication.class, args);
+		SpringApplication.run(MockTestApplication.class, args);
 	}
 
 }

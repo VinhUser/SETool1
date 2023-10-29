@@ -1,4 +1,4 @@
-package com.vinh.moockTest.service;
+package com.vinh.mockTest.service;
 
-public interface moockTestService {
+public interface mockTestService {
 }

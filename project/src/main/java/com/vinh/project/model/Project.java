@@ -1,2 +1,4 @@
-package com.vinh.project.model;public class Project {
+package com.vinh.project.model;
+
+public class Project {
 }

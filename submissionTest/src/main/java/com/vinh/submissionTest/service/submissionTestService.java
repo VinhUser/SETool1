@@ -1,2 +1,4 @@
-package com.vinh.submissionTest.service;public interface submissionTestService {
+package com.vinh.submissionTest.service;
+
+public interface submissionTestService {
 }

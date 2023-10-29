@@ -1,4 +1,4 @@
-package com.vinh.moockTest.controller;
+package com.vinh.mockTest.controller;
 
-public class MoockTestController {
+public class MockTestController {
 }

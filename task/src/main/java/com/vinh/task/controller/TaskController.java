@@ -1,2 +1,4 @@
-package com.vinh.task.controller;public class TaskController {
+package com.vinh.task.controller;
+
+public class TaskController {
 }

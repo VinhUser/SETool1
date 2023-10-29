@@ -1,6 +1,6 @@
-package com.vinh.moockTest.config;
+package com.vinh.mockTest.config;
 
-import com.vinh.moockTest.client.SubmissionClient;
+import com.vinh.mockTest.client.SubmissionClient;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpHeaders;

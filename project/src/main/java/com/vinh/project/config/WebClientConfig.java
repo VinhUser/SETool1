@@ -1,4 +1,4 @@
-package com.vinh.moockTest.config;
+package com.vinh.project.config;
 
 import org.springframework.context.annotation.Configuration;
 

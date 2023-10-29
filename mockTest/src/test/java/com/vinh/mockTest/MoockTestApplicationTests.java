@@ -1,4 +1,4 @@
-package com.vinh.moockTest;
+package com.vinh.mockTest;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

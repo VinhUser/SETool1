@@ -1,2 +1,4 @@
-package com.vinh.project.controller;public class ProjectController {
+package com.vinh.project.controller;
+
+public class ProjectController {
 }

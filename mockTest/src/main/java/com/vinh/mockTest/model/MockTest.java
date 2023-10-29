@@ -1,4 +1,4 @@
-package com.vinh.moockTest.model;
+package com.vinh.mockTest.model;
 
 public class MockTest {
 

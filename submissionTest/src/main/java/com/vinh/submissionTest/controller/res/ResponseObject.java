@@ -1,4 +1,4 @@
-package com.interview.Interview.controller.res;
+package com.vinh.submissionTest.controller.res;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
