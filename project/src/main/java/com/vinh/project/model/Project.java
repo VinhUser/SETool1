@@ -1,10 +1,7 @@
 package com.vinh.project.model;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,20 +10,21 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "Project")
+@Builder
+@Table(name = "project")
 public class Project implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ProjectId")
-    private int projectId;
-    @Column(name = "ProjectName")
-    private String projectName;
-    @Column(name = "ProjectDescription")
-    private String projectDescription;
-    @Column(name = "StartDate")
-    private Date startDate;
-    @Column(name = "EndDate")
-    private Date endDate;
-    @Column(name = "GroupId")
-    private int groupId;
+    @Column(name = "project_id")
+    public int project_id;
+    @Column(name = "project_name")
+    public String project_name;
+    @Column(name = "project_description")
+    public String project_description;
+    @Column(name = "start_date")
+    public Date start_date;
+    @Column(name = "end_date")
+    public Date end_date;
+    @Column(name = "group_id")
+    public int group_id;
 }

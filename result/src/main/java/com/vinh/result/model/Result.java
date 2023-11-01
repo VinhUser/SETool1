@@ -1,5 +1,6 @@
 package com.vinh.result.model;
 
+import com.vinh.result.client.ProjectClient;
 import com.vinh.result.model.record.MockTestRecord;
 import jakarta.persistence.*;
 import lombok.*;
@@ -7,18 +8,20 @@ import lombok.*;
 import java.io.Serializable;
 @Getter
 @Setter
-@NoArgsConstructor
 @AllArgsConstructor
 @Entity
 @Builder
-@Table(name = "result")
+@NoArgsConstructor
 public class Result implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ResultId")
-    private int resultId;
-    @Column(name = "Comment")
-    private String Comment;
-    @Column(name = "MockTest")
-    private int mockTestId;
+    @Column(name = "result_id")
+    public int result_id;
+    @Column(name = "comment")
+    public String comment;
+    @ManyToOne
+    @JoinColumn(name = "mock_test_id")
+    public int mock_test_id;
+
+
 }

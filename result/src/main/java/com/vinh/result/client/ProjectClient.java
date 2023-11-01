@@ -10,4 +10,5 @@ import org.springframework.web.service.annotation.HttpExchange;
 public interface ProjectClient {
     @GetExchange("/api/project/{id}")
     ProjectRecord getProject(@PathVariable int id);
+
 }

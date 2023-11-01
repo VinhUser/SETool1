@@ -17,12 +17,12 @@ import java.io.Serializable;
 public class MockTest implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "MoockTestId")
-    private int moockTestId;
-    @Column(name = "TestName")
-    private String testName;
-    @Column(name = "TestDescription")
-    private String testDescription;
-    @Column(name = "ProjectId")
-    private int projectId;
+    @Column(name = "moock_test_id")
+    public int moock_test_id;
+    @Column(name = "test_name")
+    public String test_name;
+    @Column(name = "test_description")
+    public String test_description;
+    @Column(name = "project_id")
+    public int project_id;
 }

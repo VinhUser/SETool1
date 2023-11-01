@@ -6,8 +6,12 @@ import com.vinh.result.model.dto.ResultDTO;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface ResultService {
     Result saveMockTest(Result mockTest);
-    PagingResponse<ResultDTO> findAllResult(Pageable pageable);
+//    PagingResponse<ResultDTO> findAllResult(Pageable pageable);
+    List <ResultDTO> findAllResults();
+//    ResultDTO findResultById(int id);
 }

@@ -13,6 +13,9 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Slf4j
 @Service
 public class MockTestServiceImpl implements MockTestService {
@@ -34,7 +37,7 @@ public class MockTestServiceImpl implements MockTestService {
             MockTestDTO mockTestDTOImpl = modelMapper.map(mockTestEntity, MockTestDTO.class);
 
             try {
-                mockTestDTOImpl.setProject(projectClient.getProject(mockTestEntity.getProjectId()));
+                mockTestDTOImpl.setProject(projectClient.getProject(mockTestEntity.getProject_id()));
             }catch (Exception e){
 
             }
@@ -48,4 +51,41 @@ public class MockTestServiceImpl implements MockTestService {
                 .contends(pageImpl.getContent())
                 .build();
     }
+    @Override
+    public List<MockTestDTO> findAllMockTest1() {
+        List<MockTestDTO> mockTestDTOs = mockTestRepository.findAll().stream()
+                .map(mockTestEntity -> {
+                    MockTestDTO mockTestDTO = modelMapper.map(mockTestEntity, MockTestDTO.class);
+
+                    try {
+                        mockTestDTO.setProject(projectClient.getProject(mockTestEntity.getProject_id()));
+                    } catch (Exception e) {
+                        // Xử lý ngoại lệ nếu cần thiết
+                    }
+                    return mockTestDTO;
+                })
+                .collect(Collectors.toList());
+
+        return mockTestDTOs;
+    }
+    @Override
+    public MockTestDTO findMockTestById(int id) {
+        MockTest mockTest = mockTestRepository.findById(id).orElse(null);
+        if (mockTest == null) {
+            return null; // hoặc xử lý nếu không tìm thấy mock test
+        }
+
+        MockTestDTO mockTestDTO = modelMapper.map(mockTest, MockTestDTO.class);
+
+        try {
+            mockTestDTO.setProject(projectClient.getProject(mockTest.getProject_id()));
+        } catch (Exception e) {
+            // Xử lý ngoại lệ nếu cần thiết
+        }
+
+        return mockTestDTO;
+    }
+
+
+
 }
