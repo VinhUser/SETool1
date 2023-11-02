@@ -9,8 +9,12 @@ import lombok.extern.slf4j.Slf4j;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.webjars.NotFoundException;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -59,5 +63,64 @@ public class TaskServiceImpl implements TaskService {
 
         return taskDTO;
     }
+    @Override
+    public TaskDTO deleteTask(int id) {
+        Optional<Task> taskOptional = taskRepository.findById(id);
+
+        if (taskOptional.isPresent()) {
+            Task deletedTask = taskOptional.get();
+            taskRepository.deleteById(id);
+
+            return createSuccessResponse(deletedTask);
+        } else {
+            return createNotFoundResponse(id);
+        }
+    }
+
+
+    //create
+    private TaskDTO createSuccessResponse(Task task) {
+        TaskDTO response = new TaskDTO();
+        response.setMessage("Project with ID " + task.getProject_id() + " has been deleted successfully.");
+        // Thêm các thông tin khác bạn muốn đưa vào response
+        return response;
+    }
+
+    private TaskDTO createNotFoundResponse(int id) {
+        TaskDTO response = new TaskDTO();
+        response.setMessage("Project with ID " + id + " does not exist, so it cannot be deleted.");
+        // Thêm các thông tin khác bạn muốn đưa vào response
+        return response;
+    }
+    @Override
+    public Task updateTask(@RequestBody Task task, @PathVariable int id) {
+        Optional<Task> optionalTask = taskRepository.findById(id);
+        if (optionalTask.isPresent()) {
+            Task existingTask = optionalTask.get();
+
+            // Update the fields from the request, if provided
+            if (task.getTask_name() != null) {
+                existingTask.setTask_name(task.getTask_name());
+            }
+            if (task.getTask_description() != null) {
+                existingTask.setTask_description(task.getTask_description());
+            }
+            if (task.getStart_date() != null) {
+                existingTask.setStart_date(task.getStart_date());
+            }
+            if (task.getEnd_date() != null) {
+                existingTask.setEnd_date(task.getEnd_date());
+            }
+                existingTask.setProject_id(task.getProject_id());
+
+
+            // Save the updated task
+            taskRepository.save(existingTask);
+            return existingTask;
+        } else {
+            throw new NotFoundException("Task not found with id: " + id);
+        }
+    }
+
 
 }

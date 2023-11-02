@@ -4,6 +4,8 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.Date;
+
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
@@ -22,4 +24,9 @@ public class Task implements Serializable {
     public String task_description;
     @Column(name = "project_id")
     public int project_id;
+    @Column(name = "start_date")
+    private Date start_date; // You might want to use the appropriate data type for dates.
+
+    @Column(name = "end_date")
+    private Date end_date;
 }
