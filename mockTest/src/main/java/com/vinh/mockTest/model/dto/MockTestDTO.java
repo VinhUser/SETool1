@@ -15,4 +15,15 @@ public class MockTestDTO implements Serializable {
     public String test_name;
     public String test_description;
     public ProjectRecord project;
+    private String message;
+
+    // Các phương thức getter và setter cho trường message
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 }
