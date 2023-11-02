@@ -1,5 +1,6 @@
 package com.vinh.project.service.impl;
 
+import com.vinh.project.client.GroupClient;
 import com.vinh.project.model.dto.ProjectDTO;
 import com.vinh.project.repository.ProjectRepository;
 import com.vinh.project.service.ProjectService;
@@ -15,11 +16,11 @@ import java.util.stream.Collectors;
 @Slf4j
 public class ProjectServiceImpl implements ProjectService {
     @Autowired
-    ProjectService projectService;
-    @Autowired
     ProjectRepository projectRepository;
     @Autowired
     private ModelMapper modelMapper;
+    @Autowired
+    private GroupClient groupClient;
     @Override
     public List<ProjectDTO> findAllProject() {
         List<ProjectDTO> projectDTOS = projectRepository.findAll().stream()
@@ -27,7 +28,7 @@ public class ProjectServiceImpl implements ProjectService {
                     ProjectDTO projectDTO = modelMapper.map(projectEntity, ProjectDTO.class);
 
                     try {
-
+                        projectDTO.setGroup(groupClient.getGroup(projectEntity.getGroup_id()));
                     } catch (Exception e) {
                         // Xử lý ngoại lệ nếu cần thiết
                     }
@@ -37,5 +38,6 @@ public class ProjectServiceImpl implements ProjectService {
 
         return projectDTOS;
     }
+
 
 }

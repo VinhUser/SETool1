@@ -16,6 +16,17 @@ public class ProjectDTO implements Serializable {
     public String project_description;
     public Date start_date;
     public Date end_date;
-    public int group_id;
+    public GroupRecord group;
+    private String message;
+
+    // Các phương thức getter và setter cho trường message
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
 
 }
