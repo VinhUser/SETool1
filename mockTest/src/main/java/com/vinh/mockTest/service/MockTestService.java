@@ -5,6 +5,8 @@ import com.vinh.mockTest.model.MockTest;
 import com.vinh.mockTest.model.dto.MockTestDTO;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 
@@ -18,4 +20,7 @@ public interface MockTestService {
     MockTestDTO findMockTestById(int id);
 
 
+    MockTestDTO deleteMockTest(@PathVariable int id);
+
+    MockTest updateMockTest(@RequestBody MockTest mockTest, @PathVariable int id);
 }

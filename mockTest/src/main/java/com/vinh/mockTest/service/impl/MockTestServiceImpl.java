@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
 import java.util.Optional;
@@ -85,6 +87,53 @@ public class MockTestServiceImpl implements MockTestService {
         }
 
         return mockTestDTO;
+    }
+    @Override
+    public MockTestDTO deleteMockTest(@PathVariable int id) {
+        Optional<MockTest> mockTestOptional = mockTestRepository.findById(id);
+
+        if (mockTestOptional.isPresent()) {
+            MockTest deletedMockTest = mockTestOptional.get();
+            mockTestRepository.deleteById(id);
+
+            return createSuccessResponse(deletedMockTest);
+        } else {
+            return createNotFoundResponse(id);
+        }
+    }
+
+    private MockTestDTO createSuccessResponse(MockTest deletedMockTest) {
+        MockTestDTO response = new MockTestDTO();
+        response.setMessage("MockTest with ID " + deletedMockTest.getMoock_test_id() + " has been deleted successfully.");
+        // Thêm các thông tin khác bạn muốn đưa vào response
+        return response;
+    }
+
+    private MockTestDTO createNotFoundResponse(int id) {
+        MockTestDTO response = new MockTestDTO();
+        response.setMessage("MockTest with ID " + id + " does not exist, so it cannot be deleted.");
+        // Thêm các thông tin khác bạn muốn đưa vào response
+        return response;
+    }
+    @Override
+    public MockTest updateMockTest(@RequestBody MockTest mockTest, @PathVariable int id) {
+        Optional<MockTest> mockTestOptional = mockTestRepository.findById(id);
+        if (mockTestOptional.isPresent()) {
+            MockTest mockTest1 = mockTestOptional.get();
+            List<MockTest> mockTestList = mockTestRepository.findAll();
+            for (MockTest mockTest2 : mockTestList) {
+
+                mockTest.setMoock_test_id(mockTest.getMoock_test_id());
+                mockTest.setTest_name(mockTest.getTest_name());
+                mockTest.setTest_description(mockTest.getTest_description());
+                mockTest.setProject_id(mockTest.getProject_id());
+
+
+                mockTestRepository.save(mockTest);
+
+            }
+        }
+        return mockTest;
     }
 
 }

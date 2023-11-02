@@ -23,48 +23,29 @@ public class MockTestController {
     @Autowired
     private MockTestRepository mockTestRepository;
 
-    @GetMapping("/getsAll") //get all mocktest
+    @GetMapping("/mockTest") //get all mocktest
     public ResponseEntity<PagingResponse<MockTestDTO>> getInterviewPagination(@ParameterObject Pageable pageable) {
         return ResponseEntity.status(HttpStatus.OK).body(mockTestService.findAllMockTest(pageable));
     }
-    @GetMapping("/get/{id}") //get mocktest
+    @GetMapping("/mockTest/{id}") //get mocktest
     public MockTestDTO mockTest(@PathVariable int id){
         return mockTestService.findMockTestById(id);
     }
-    @GetMapping("/getAll")
+    @GetMapping("/mockTest")
     public List<MockTestDTO> getAllMockTests() {
         return mockTestService.findAllMockTest1();
     }
-    @PostMapping("/post") //create mocktest
+    @PostMapping("/mockTest") //create mocktest
     public MockTest postMocktest(@RequestBody MockTest mockTest) {
         return mockTestRepository.save(mockTest);
     }
-    @DeleteMapping("delete/{id}")
-    public MockTestDTO deleteMockTest(@PathVariable int id) {
-        Optional<MockTest> mockTestOptional = mockTestRepository.findById(id);
-
-        if (mockTestOptional.isPresent()) {
-            MockTest deletedMockTest = mockTestOptional.get();
-            mockTestRepository.deleteById(id);
-
-            return createSuccessResponse(deletedMockTest);
-        } else {
-            return createNotFoundResponse(id);
-        }
+    @DeleteMapping("/mockTest/{id}")
+    public MockTestDTO deleteMockTest(@PathVariable int id){
+        return mockTestService.deleteMockTest(id);
     }
-
-    private MockTestDTO createSuccessResponse(MockTest deletedMockTest) {
-        MockTestDTO response = new MockTestDTO();
-        response.setMessage("MockTest with ID " + deletedMockTest.getMoock_test_id() + " has been deleted successfully.");
-        // Thêm các thông tin khác bạn muốn đưa vào response
-        return response;
-    }
-
-    private MockTestDTO createNotFoundResponse(int id) {
-        MockTestDTO response = new MockTestDTO();
-        response.setMessage("MockTest with ID " + id + " does not exist, so it cannot be deleted.");
-        // Thêm các thông tin khác bạn muốn đưa vào response
-        return response;
+    @PutMapping("/mockTest/{id}")
+    public MockTest updateMockTest(@RequestBody MockTest mockTest, @PathVariable int id){
+        return mockTestService.updateMockTest(mockTest, id);
     }
 
 }

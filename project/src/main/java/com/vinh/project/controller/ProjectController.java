@@ -8,7 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @RestController
 @RequestMapping("/api")
@@ -21,44 +21,27 @@ public class ProjectController {
 
 
     @GetMapping("/project/{id}")
-    public Project project(@PathVariable int id) {
-        return projectRepository.findById(id).orElse(null);
+    public ProjectDTO findProjectById(@PathVariable int id){
+        return projectService.findProjectById(id);
     }
-    @GetMapping("/getAll")
+    @GetMapping("/project")
     public List<ProjectDTO> findAllProject() {
         return projectService.findAllProject();
     }
-    @PostMapping("/post") //create project
-    public Project postMocktest(@RequestBody Project project) {
+    @PostMapping("/project") //create project
+    public Project postProject(@RequestBody Project project) {
         return projectRepository.save(project);
     }
-    @DeleteMapping("delete/{id}")
+    @DeleteMapping("/project/{id}")
     public ProjectDTO deleteProject(@PathVariable int id) {
-        Optional<Project> projectOptional = projectRepository.findById(id);
+        return projectService.deleteProject(id);
+    }
+    @PutMapping("/project/{id}")
+    public Project updateProject(@RequestBody Project updatedProject, @PathVariable int id) {
+        return projectService.updateProject(updatedProject, id);
 
-        if (projectOptional.isPresent()) {
-            Project deletedProject = projectOptional.get();
-            projectRepository.deleteById(id);
-
-            return createSuccessResponse(deletedProject);
-        } else {
-            return createNotFoundResponse(id);
-        }
     }
 
-    private ProjectDTO createSuccessResponse(Project deletedProject) {
-        ProjectDTO response = new ProjectDTO();
-        response.setMessage("Project with ID " + deletedProject.getProject_id() + " has been deleted successfully.");
-        // Thêm các thông tin khác bạn muốn đưa vào response
-        return response;
-    }
-
-    private ProjectDTO createNotFoundResponse(int id) {
-        ProjectDTO response = new ProjectDTO();
-        response.setMessage("Project with ID " + id + " does not exist, so it cannot be deleted.");
-        // Thêm các thông tin khác bạn muốn đưa vào response
-        return response;
-    }
 
 
 }
