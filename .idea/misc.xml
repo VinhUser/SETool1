@@ -15,6 +15,7 @@
         <option value="$PROJECT_DIR$/user/pom.xml" />
         <option value="$PROJECT_DIR$/mockTest/pom.xml" />
         <option value="$PROJECT_DIR$/submissionTask/pom.xml" />
+        <option value="$PROJECT_DIR$/../discoveryServer/pom.xml" />
       </list>
     </option>
   </component>

@@ -12,9 +12,9 @@
         <module name="mockTest" />
         <module name="submissionTask" />
         <module name="project" />
-        <module name="discoveryServer" />
         <module name="interview" />
         <module name="user" />
+        <module name="discoveryServer" />
         <module name="group" />
       </profile>
     </annotationProcessing>

@@ -32,7 +32,7 @@ The Software Engineering Project Management Tool is a versatile and powerful app
 Before you get started, you'll need the following:
 
 - [ ] Java Spring Boot.
-- [ ] Database server (Sql Server) set up.
+- [ ] Database server (My Server) set up.
 - [ ] Git repository for source code version control.
 
 ### Installation
