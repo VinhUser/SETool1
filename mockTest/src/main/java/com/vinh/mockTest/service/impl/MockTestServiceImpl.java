@@ -34,26 +34,7 @@ public class MockTestServiceImpl implements MockTestService {
         return mockTestRepository.save(mockTest);
     }
 
-    @Override
-    public PagingResponse<MockTestDTO> findAllMockTest(Pageable pageable) {
-        Page<MockTestDTO> pageImpl = mockTestRepository.findAll(pageable).map(mockTestEntity -> {
-            MockTestDTO mockTestDTOImpl = modelMapper.map(mockTestEntity, MockTestDTO.class);
 
-            try {
-                mockTestDTOImpl.setProject(projectClient.getProject(mockTestEntity.getProject_id()));
-            }catch (Exception e){
-
-            }
-            return mockTestDTOImpl;
-        });
-        return PagingResponse.<MockTestDTO>builder()
-                .page(pageImpl.getNumber())
-                .size(pageImpl.getSize())
-                .totalPage(pageImpl.getTotalPages())
-                .totalItem(pageImpl.getTotalElements())
-                .contends(pageImpl.getContent())
-                .build();
-    }
     @Override
     public List<MockTestDTO> findAllMockTest1() {
         List<MockTestDTO> mockTestDTOs = mockTestRepository.findAll().stream()

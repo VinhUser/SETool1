@@ -8,7 +8,7 @@ import org.springframework.web.service.annotation.HttpExchange;
 
 @HttpExchange
 public interface MockTestClient {
-    @GetExchange("/api/get/{id}")
+    @GetExchange("/api/mockTest/{id}")
     MockTestRecord getMockTest(@PathVariable int id);
 
 }

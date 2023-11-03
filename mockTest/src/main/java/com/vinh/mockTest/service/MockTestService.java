@@ -13,7 +13,7 @@ import java.util.List;
 @Service
 public interface MockTestService {
     MockTest saveMockTest(MockTest mockTest);
-    PagingResponse<MockTestDTO> findAllMockTest(Pageable pageable);
+
     List<MockTestDTO> findAllMockTest1();
 
 

@@ -13,5 +13,7 @@ public interface ResultService {
     Result saveMockTest(Result mockTest);
 //    PagingResponse<ResultDTO> findAllResult(Pageable pageable);
     List <ResultDTO> findAllResults();
-//    ResultDTO findResultById(int id);
+
+    ResultDTO findResultById(int id);
+
 }

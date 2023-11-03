@@ -16,8 +16,6 @@ public class ResultDTO implements Serializable {
     private int resultId;
     private String Comment;
     private MockTestRecord mockTest;
-    public MockTestRecord getMockTest() {
-        return mockTest;
-    }
+
 
 }

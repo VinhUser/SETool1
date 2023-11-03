@@ -23,10 +23,6 @@ public class MockTestController {
     @Autowired
     private MockTestRepository mockTestRepository;
 
-    @GetMapping("/mockTest") //get all mocktest
-    public ResponseEntity<PagingResponse<MockTestDTO>> getInterviewPagination(@ParameterObject Pageable pageable) {
-        return ResponseEntity.status(HttpStatus.OK).body(mockTestService.findAllMockTest(pageable));
-    }
     @GetMapping("/mockTest/{id}") //get mocktest
     public MockTestDTO mockTest(@PathVariable int id){
         return mockTestService.findMockTestById(id);

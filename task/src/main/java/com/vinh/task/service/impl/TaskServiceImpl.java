@@ -81,14 +81,14 @@ public class TaskServiceImpl implements TaskService {
     //create
     private TaskDTO createSuccessResponse(Task task) {
         TaskDTO response = new TaskDTO();
-        response.setMessage("Project with ID " + task.getProject_id() + " has been deleted successfully.");
+        response.setMessage("Task with ID " + task.getTask_id() + " has been deleted successfully.");
         // Thêm các thông tin khác bạn muốn đưa vào response
         return response;
     }
 
     private TaskDTO createNotFoundResponse(int id) {
         TaskDTO response = new TaskDTO();
-        response.setMessage("Project with ID " + id + " does not exist, so it cannot be deleted.");
+        response.setMessage("Task with ID " + id + " does not exist, so it cannot be deleted.");
         // Thêm các thông tin khác bạn muốn đưa vào response
         return response;
     }

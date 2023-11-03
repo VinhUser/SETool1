@@ -30,7 +30,7 @@ public class ResultController {
     }
 
     @GetMapping("/displayQuestionById1/{id}")
-    public Result result(@PathVariable int id){
-        return resultRepository.findById(id).orElse(null);
+    public ResultDTO findResultById(@PathVariable int id){
+        return resultService.findResultById(id);
     }
 }
