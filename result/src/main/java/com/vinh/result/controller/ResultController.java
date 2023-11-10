@@ -10,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,13 +21,25 @@ public class ResultController {
     ResultRepository resultRepository;
     @Autowired
     ResultService resultService;
-    @GetMapping("/getsAll") //get all interview
+    @GetMapping("/result") //get all interview
     public List<ResultDTO> findAllResults(){
         return resultService.findAllResults();
     }
 
-    @GetMapping("/displayQuestionById1/{id}")
+    @GetMapping("/result/{id}")
     public ResultDTO findResultById(@PathVariable int id){
         return resultService.findResultById(id);
+    }
+    @PostMapping("/result")
+    public Result resultTask(@RequestBody Result submissionTask) {
+        return resultRepository.save(submissionTask);
+    }
+    @DeleteMapping("/result/{id}")
+    public ResultDTO deleteResult(@PathVariable int id){
+        return resultService.deleteResult(id);
+    }
+    @PutMapping("/result/{id}")
+    public Result updateResult(@RequestBody Result result, @PathVariable int id){
+        return resultService.updateResult(result, id);
     }
 }

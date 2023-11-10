@@ -18,6 +18,8 @@ public interface ProjectService {
 
 //    ProjectDTO findProjectByIdOrName(String idOrName);
 
+    ProjectDTO findProjectByIdOrName(String idOrName);
+
     List<ProjectDTO> findAllProject();
 
 

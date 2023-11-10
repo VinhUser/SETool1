@@ -30,5 +30,12 @@ public class SubmissionController {
     public SubmissionTask submissionTask(@RequestBody SubmissionTask submissionTask) {
         return submissionRepository.save(submissionTask);
     }
-
+    @DeleteMapping("/submissionTask/{id}")
+    public SubmissionTaskDTO deleteSubmissionTask(@PathVariable int id){
+        return submissionTaskService.deleteSubmissionTask(id);
+    }
+    @PutMapping("/submissionTask")
+    SubmissionTask updateSubmissionTask(@RequestBody SubmissionTask updatedSubmissionTask,@PathVariable int id){
+        return submissionTaskService.updateSubmissionTask(updatedSubmissionTask, id);
+    }
 }

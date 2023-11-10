@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Slf4j
 @Service
@@ -25,6 +27,7 @@ public class ResultServiceImpl implements ResultService {
     @Autowired
     private MockTestClient mockTestClient;
 
+
     @Override
     public Result saveMockTest(Result result) {
         return resultRepository.save(result);
@@ -33,7 +36,20 @@ public class ResultServiceImpl implements ResultService {
 
 @Override
 public List<ResultDTO> findAllResults() {
-        return null;
+    List<ResultDTO> resultDTOs = resultRepository.findAll().stream()
+            .map(resultEntity -> {
+                ResultDTO resultDTO = modelMapper.map(resultEntity, ResultDTO.class);
+
+                try {
+                    resultDTO.setMockTest(mockTestClient.getMockTest(resultEntity.getMock_test_id()));
+                } catch (Exception e) {
+                    // Handle exceptions if necessary
+                }
+                return resultDTO;
+            })
+            .collect(Collectors.toList());
+
+    return resultDTOs;
 }
     @Override
     public ResultDTO findResultById(int id) {
@@ -53,5 +69,62 @@ public List<ResultDTO> findAllResults() {
 
         return resultDTO;
     }
+    @Override
+    public ResultDTO deleteResult(int id) {
+        Optional<Result> resultOptional = resultRepository.findById(id);
+
+        if (resultOptional.isPresent()) {
+            Result deletedResult = resultOptional.get();
+            resultRepository.deleteById(id);
+
+            return createSuccessResponse(deletedResult);
+        } else {
+            return createNotFoundResponse(id);
+        }
+    }
+
+
+    //create
+    private ResultDTO createSuccessResponse(Result submissionTask) {
+        ResultDTO response = new ResultDTO();
+        response.setMessage("Project with ID " + submissionTask.getResult_id() + " has been deleted successfully.");
+        // Thêm các thông tin khác bạn muốn đưa vào response
+        return response;
+    }
+
+    private ResultDTO createNotFoundResponse(int id) {
+        ResultDTO response = new ResultDTO();
+        response.setMessage("Project with ID " + id + " does not exist, so it cannot be deleted.");
+        // Thêm các thông tin khác bạn muốn đưa vào response
+        return response;
+    }
+    @Override
+    public Result updateResult(Result updatedResult, int id) {
+        Optional<Result> optionalResult = resultRepository.findById(id);
+        if (optionalResult.isPresent()) {
+            Result existingResult = optionalResult.get();
+            List<Result> resultList = resultRepository.findAll();
+
+            for (Result result : resultList) {
+                if (result.getMock_test_id() == updatedResult.getMock_test_id() && result.getResult_id() != id) {
+                    throw new IllegalArgumentException("This Result is duplicated with Result ID " + result.getResult_id() + "!, Update fail!");
+                }
+            }
+
+            existingResult.setComment(updatedResult.getComment());
+
+            return resultRepository.save(existingResult);
+        } else {
+            throw new IllegalArgumentException("Result with ID " + id + " does not exist, so it cannot be updated.");
+        }
+    }
+
+
+
+
+
+
+
+
 
 }

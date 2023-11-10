@@ -104,10 +104,9 @@ public class MockTestServiceImpl implements MockTestService {
             List<MockTest> mockTestList = mockTestRepository.findAll();
             for (MockTest mockTest2 : mockTestList) {
 
-                mockTest.setMoock_test_id(mockTest.getMoock_test_id());
+
                 mockTest.setTest_name(mockTest.getTest_name());
                 mockTest.setTest_description(mockTest.getTest_description());
-                mockTest.setProject_id(mockTest.getProject_id());
 
 
                 mockTestRepository.save(mockTest);

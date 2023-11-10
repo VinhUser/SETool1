@@ -12,13 +12,13 @@
         <module name="mockTest" />
         <module name="submissionTask" />
         <module name="project" />
-        <module name="interview" />
-        <module name="user" />
         <module name="discoveryServer" />
+        <module name="user" />
         <module name="group" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
+      <module name="interview" target="17" />
       <module name="interview (1)" target="17" />
       <module name="interview (2)" target="17" />
       <module name="interview (3)" target="17" />

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.*;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 @Getter
@@ -25,4 +26,8 @@ public class MockTest implements Serializable {
     public String test_description;
     @Column(name = "project_id")
     public int project_id;
+    @Column(name = "start_date")
+    public Date start_date;
+    @Column(name = "end_date")
+    public Date end_date;
 }

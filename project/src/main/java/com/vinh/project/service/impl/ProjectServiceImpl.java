@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
@@ -46,33 +45,33 @@ public class ProjectServiceImpl implements ProjectService {
         return projectDTO;
     }
 
-//    @Override
-//    public ProjectDTO findProjectByIdOrName(String idOrName) {
-//        Project project = null;
-//
-//        try {
-//            // Thử tìm dự án bằng ID trước
-//            int id = Integer.parseInt(idOrName);
-//            project = projectRepository.findById(id).orElse(null);
-//        } catch (NumberFormatException e) {
-//            // Nếu idOrName không phải là số, nó có thể là tên, bạn có thể thực hiện tìm kiếm bằng tên ở đây
-//            project = projectRepository.findByName(idOrName);
-//        }
-//
-//        if (project == null) {
-//            return null; // hoặc xử lý nếu không tìm thấy project
-//        }
-//
-//        ProjectDTO projectDTO = modelMapper.map(project, ProjectDTO.class);
-//
-//        try {
-//            projectDTO.setGroup(groupClient.getGroup(project.getGroup_id()));
-//        } catch (Exception e) {
-//            // Xử lý ngoại lệ nếu cần thiết
-//        }
-//
-//        return projectDTO;
-//    }
+    @Override
+    public ProjectDTO findProjectByIdOrName(String idOrName) {
+        Project project = null;
+
+        try {
+            // Thử tìm dự án bằng ID trước
+            int id = Integer.parseInt(idOrName);
+            project = projectRepository.findById(id).orElse(null);
+        } catch (NumberFormatException e) {
+            // Nếu idOrName không phải là số, nó có thể là tên, bạn có thể thực hiện tìm kiếm bằng tên ở đây
+            project = projectRepository.findByName(idOrName);
+        }
+
+        if (project == null) {
+            return null; // hoặc xử lý nếu không tìm thấy project
+        }
+
+        ProjectDTO projectDTO = modelMapper.map(project, ProjectDTO.class);
+
+        try {
+            projectDTO.setGroup(groupClient.getGroup(project.getGroup_id()));
+        } catch (Exception e) {
+            // Xử lý ngoại lệ nếu cần thiết
+        }
+
+        return projectDTO;
+    }
 
 
     //find all
@@ -137,9 +136,8 @@ public class ProjectServiceImpl implements ProjectService {
                 project.setProject_id(project1.getProject_id());
                 project.setProject_name(project.getProject_name());
                 project.setProject_description(project.getProject_description());
-                project.setStart_date(project.getStart_date());
-                project.setEnd_date(project.getEnd_date());
-                project.setGroup_id(project.getGroup_id());
+
+
 
 
                 projectRepository.save(project);

@@ -19,7 +19,6 @@ public class Result implements Serializable {
     public int result_id;
     @Column(name = "comment")
     public String comment;
-    @ManyToOne
     @JoinColumn(name = "mock_test_id")
     public int mock_test_id;
 

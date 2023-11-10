@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api")
+@CrossOrigin(origins = "*")
 public class ProjectController {
     @Autowired
     ProjectService projectService;
@@ -23,6 +24,10 @@ public class ProjectController {
     @GetMapping("/project/{id}")
     public ProjectDTO findProjectById(@PathVariable int id){
         return projectService.findProjectById(id);
+    }
+    @GetMapping("/project/projectName/{idOrName}")
+    public ProjectDTO findProjectByIdOrName(@PathVariable String idOrName){
+        return projectService.findProjectByIdOrName(idOrName);
     }
     @GetMapping("/project")
     public List<ProjectDTO> findAllProject() {

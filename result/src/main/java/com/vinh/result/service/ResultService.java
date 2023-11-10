@@ -16,4 +16,7 @@ public interface ResultService {
 
     ResultDTO findResultById(int id);
 
+    ResultDTO deleteResult(int id);
+
+    Result updateResult(Result updatedResult, int id);
 }

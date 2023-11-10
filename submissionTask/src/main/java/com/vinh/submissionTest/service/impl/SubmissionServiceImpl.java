@@ -93,4 +93,27 @@ public class SubmissionServiceImpl implements SubmissionTaskService {
         // Thêm các thông tin khác bạn muốn đưa vào response
         return response;
     }
+    @Override
+    public SubmissionTask updateSubmissionTask(SubmissionTask updatedSubmissionTask, int id) {
+        Optional<SubmissionTask> optionalSubmissionTask = submissionRepository.findById(id);
+        if (optionalSubmissionTask.isPresent()) {
+            SubmissionTask existingSubmissionTask = optionalSubmissionTask.get();
+            List<SubmissionTask> submissionTaskList = submissionRepository.findAll();
+
+            for (SubmissionTask submissionTask : submissionTaskList) {
+                if (submissionTask.getTask_id() == updatedSubmissionTask.getTask_id()
+                        && submissionTask.getSubmission_task_id() != id) {
+                    throw new IllegalArgumentException("This SubmissionTask is duplicated with Submission Task ID " + submissionTask.getSubmission_task_id() + "!, Update fail!");
+                }
+            }
+
+            existingSubmissionTask.setSubmission_date(updatedSubmissionTask.getSubmission_date());
+            existingSubmissionTask.setContent(updatedSubmissionTask.getContent());
+
+            return submissionRepository.save(existingSubmissionTask);
+        } else {
+            throw new IllegalArgumentException("SubmissionTask with ID " + id + " does not exist, so it cannot be updated.");
+        }
+    }
+
 }

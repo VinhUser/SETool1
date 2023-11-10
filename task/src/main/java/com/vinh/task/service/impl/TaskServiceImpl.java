@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.webjars.NotFoundException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -63,6 +64,8 @@ public class TaskServiceImpl implements TaskService {
 
         return taskDTO;
     }
+
+
     @Override
     public TaskDTO deleteTask(int id) {
         Optional<Task> taskOptional = taskRepository.findById(id);
@@ -111,7 +114,6 @@ public class TaskServiceImpl implements TaskService {
             if (task.getEnd_date() != null) {
                 existingTask.setEnd_date(task.getEnd_date());
             }
-                existingTask.setProject_id(task.getProject_id());
 
 
             // Save the updated task
